@@ -1,4 +1,3 @@
-# rubocop:disable Naming/PredicateName
 require './nameable'
 
 class Person < Nameable
@@ -6,6 +5,7 @@ class Person < Nameable
   attr_accessor :name, :age
 
   def initialize(age, name = 'Unknown', parent_permission: true)
+    super()
     @id = Random.rand(1..1000)
     @name = name
     @age = age
@@ -22,9 +22,7 @@ class Person < Nameable
 
   private
 
-  def is_of_age?
+  def of_age?
     @age >= 18
   end
 end
-
-# rubocop:enable Naming/PredicateName
