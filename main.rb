@@ -2,43 +2,59 @@ require './app'
 
 def menu
   puts('-------------------------------------')
-  puts("Pick an option by entering a number")
+  puts("Please choose an option by entering a number: ")
   print('-------------------------------------')
   print("
   1 - List all books
   2 - List all people
-  3 - Add a book
-  4 - Add a person
-  5 - Rent a book
-  6 - List rents of a person
+  3 - Create a person
+  4 - Create a book
+  5 - Create a rental
+  6 - List all rentals for a give person id
   7 - Exit
   ")
 end
 
+def run_app(app, method)
+  case method
+  when 1
+    app.list_of_books
+  when 2
+    app.list_of_people
+  when 3
+    app.create_a_person
+  when 4
+    app.create_book
+  when 5
+    app.create_rental
+  when 6
+    app.list_all_rentals_per_person
+  when 7
+    puts 'Thank you for using this app'
+    abort
+  else
+    puts 'Invalid option. Please enter a valid option'
+  end
+end
+
 def main
-  menu()
   app = App.new
   options = {
     1 => 'list_of_books',
     2 => 'list_of_people',
-    3 => 'create_book',
-    4 => 'create_a_person',
+    3 => 'create_a_person',
+    4 => 'create_book',
     5 => 'create_rental',
     6 => 'list_all_rentals_for_person',
     7 => 'exit'
   }
-  choice = gets.chomp.to_i
-  case choice
-  when 1..6
-    app.send(options[choice]) unless choice == 7
-  when 7
-    puts 'Thank you for using the app'
-    abort
-  else
-    puts 'Invalid Input'
+  choice = -1
+  until choice == 7
+    menu()
+    choice = gets.chomp.to_i
+    run_app(app, choice)
   end
-  main()
-  puts 'Thank you for using the app'
 end
 
+puts 'Welcome to School Library App!'
 main()
