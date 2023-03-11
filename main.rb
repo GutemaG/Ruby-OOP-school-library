@@ -2,7 +2,7 @@ require './app'
 
 def menu
   puts('-------------------------------------')
-  puts("Please choose an option by entering a number: ")
+  puts('Please choose an option by entering a number: ')
   print('-------------------------------------')
   print("
   1 - List all books
@@ -11,7 +11,7 @@ def menu
   4 - Create a book
   5 - Create a rental
   6 - List all rentals for a give person id
-  7 - Exit
+  7 or 0 - Exit
   ")
 end
 
@@ -29,7 +29,7 @@ def run_app(app, method)
     app.create_rental
   when 6
     app.list_all_rentals_per_person
-  when 7
+  when 7 || 0
     puts 'Thank you for using this app'
     abort
   else
@@ -39,22 +39,13 @@ end
 
 def main
   app = App.new
-  options = {
-    1 => 'list_of_books',
-    2 => 'list_of_people',
-    3 => 'create_a_person',
-    4 => 'create_book',
-    5 => 'create_rental',
-    6 => 'list_all_rentals_for_person',
-    7 => 'exit'
-  }
   choice = -1
-  until choice == 7
-    menu()
+  until choice == 7 || choice.zero?
+    menu
     choice = gets.chomp.to_i
-    run_app(app, choice)
+    run_app(app, choice) unless choice.zero?
   end
 end
 
 puts 'Welcome to School Library App!'
-main()
+main
