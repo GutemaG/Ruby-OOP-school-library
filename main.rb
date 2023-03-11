@@ -42,7 +42,7 @@ def main
     choice = gets.chomp.to_i
     run_app(app, choice) unless choice == 7
   end
-    puts 'Thank you for using this app'
+  puts 'Thank you for using this app'
 end
 
 puts 'Welcome to School Library App!'
