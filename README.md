@@ -69,7 +69,7 @@ To run the project, execute the following command:
 
 
 ```sh
-  ruby person.rb
+  ruby main.rb
 ```
 
 ### Run tests
