@@ -29,9 +29,6 @@ def run_app(app, method)
     app.create_rental
   when 6
     app.list_all_rentals_per_person
-  when 7 || 0
-    puts 'Thank you for using this app'
-    abort
   else
     puts 'Invalid option. Please enter a valid option'
   end
@@ -43,8 +40,9 @@ def main
   until choice == 7 || choice.zero?
     menu
     choice = gets.chomp.to_i
-    run_app(app, choice) unless choice.zero?
+    run_app(app, choice) unless choice == 7
   end
+    puts 'Thank you for using this app'
 end
 
 puts 'Welcome to School Library App!'
