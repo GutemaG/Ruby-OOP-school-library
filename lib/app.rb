@@ -1,7 +1,7 @@
-require './student'
-require './teacher'
-require './book'
-require './rental'
+require './lib/student'
+require './lib/teacher'
+require './lib/book'
+require './lib/rental'
 
 class App
   attr_reader :books, :rentals, :people

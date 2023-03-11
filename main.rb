@@ -1,4 +1,4 @@
-require './app'
+require './lib/app'
 
 def menu
   puts('-------------------------------------')
